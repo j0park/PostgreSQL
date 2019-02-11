@@ -11,8 +11,10 @@ from "053_mst_users";
 
 select stamp
   , substring(referrer  from 'https?://([^/]*)') AS referrer_host
- --Hive ,parse_url(referrer, 'HOST') AS referrer_host
 from "056_access_log";
+ --Hive select stamp
+ --Hive ,parse_url(referrer, 'HOST') AS referrer_host
+ --Hive from 056_access_log;
 
 
 --Page 57
@@ -21,9 +23,12 @@ select stamp
   , url
   , substring(url  from '//[^/]+([^?#]+)') AS path
   , substring(url  from 'id=([^&]*)') AS id
+from "056_access_log";
+ --Hive select stamp
+ --Hive   , url
  --Hive ,parse_url(url, 'PATH') AS path
  --Hive ,parse_url(url, 'QUERT', 'id') AS id
-from "056_access_log";
+ --Hive from 056_access_log;
 
 
 --Page 58
@@ -50,7 +55,7 @@ select
 --Page 61
 select
   CAST('2016-01-30' AS date ) AS dt
-  , CAST('2016-01-30 12:00:00' AS timestamp) as STAMP
+  , CAST('2016-01-30 12:00:00' AS timestamp) as STAMP;
 --Hive  date('2016-01-30') AS dt
 --Hive , timestamp('2016-01-30 12:00:00') AS stamp
 
