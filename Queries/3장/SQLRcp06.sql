@@ -99,11 +99,11 @@ from "074_advertising_stats"
 where dt='2017-04-01'
 order by dt, ad_id;
 
-  --Page64
+  --Page77
 Select
   purchase_id
   , amount
   , coupon
   , amount - coupon AS discount_amount1
   , amount - coalesce(coupon,0) AS discount_amount2
-from "064_purchase_log_with_coupon"
+from "077_location_1d"
