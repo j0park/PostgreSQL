@@ -11,7 +11,7 @@ from "053_mst_users"
 
 select stamp
   , substring(referrer  from 'https?://([^/]*)') AS referrer_host
- -- ,parse_url(referrer, 'HOST') AS referrer_host
+ --Hive ,parse_url(referrer, 'HOST') AS referrer_host
 from "056_access_log"
 
 
@@ -21,8 +21,8 @@ select stamp
   , url
   , substring(url  from '//[^/]+([^?#]+)') AS path
   , substring(url  from 'id=([^&]*)') AS id
- -- ,parse_url(url, 'PATH') AS path
- -- ,parse_url(url, 'QUERT', 'id') AS id
+ --Hive ,parse_url(url, 'PATH') AS path
+ --Hive ,parse_url(url, 'QUERT', 'id') AS id
 from "056_access_log"
 
 
@@ -33,8 +33,8 @@ select
   , url
   , split_part(substring(url  from '//[^/]+([^?#]+)'),'/',2) AS path1
   , split_part(substring(url  from '//[^/]+([^?#]+)'),'/',3) AS path2
- -- ,split(parse_url(url, 'PATH','/') AS path1
- -- ,split(parse_url(url, 'QUERT', '/') AS path2
+ --Hive ,split(parse_url(url, 'PATH','/') AS path1
+ --Hive ,split(parse_url(url, 'QUERT', '/') AS path2
 from "056_access_log"
 
 
@@ -42,8 +42,8 @@ from "056_access_log"
 select
     current_date AS dt
   , current_timestamp AS stamp
- -- ,  current_date() AS dt
- -- , current_timestamp() AS stamp
+ --Hive ,  current_date() AS dt
+ --Hive , current_timestamp() AS stamp
 
 
 
@@ -51,8 +51,8 @@ select
 select
   CAST('2016-01-30' AS date ) AS dt
   , CAST('2016-01-30 12:00:00' AS timestamp) as STAMP
--- date('2016-01-30') AS dt
---, timestamp('2016-01-30 12:00:00') AS stamp
+--Hive  date('2016-01-30') AS dt
+--Hive , timestamp('2016-01-30 12:00:00') AS stamp
 
 
 --Page 62
@@ -63,10 +63,10 @@ select
   , extract(DAY from STAMP) AS Day
   , extract(Hours from STAMP) AS Hour
 
-  --, YEAR ( STAMP) AS Year
-  --, MONTH ( STAMP) AS Month
-  --, DAY ( STAMP) AS Day
-  --, Hours ( STAMP) AS Hour
+--Hive , YEAR ( STAMP) AS Year
+--Hive , MONTH ( STAMP) AS Month
+--Hive , DAY ( STAMP) AS Day
+--Hive , Hours ( STAMP) AS Hour
 from (select CAST('2016-01-30 12:00:00' AS timestamp) as STAMP ) AS t1
 
 
@@ -78,13 +78,13 @@ select
   , substring(STAMP,9,2) AS Day
   , substring(STAMP,12,2) AS Hour
   , substring(STAMP,1,7) AS Year_month
-  -- , substr(STAMP,1,4) AS Year
-  --, substr(STAMP,6,2) AS Month
-  --, substr(STAMP,9,2) AS Day
-  --, substr(STAMP,12,2) AS Hour
-  --, substr(STAMP,1,7) AS Year_month
+--Hive  , substr(STAMP,1,4) AS Year
+--Hive , substr(STAMP,6,2) AS Month
+--Hive , substr(STAMP,9,2) AS Day
+--Hive , substr(STAMP,12,2) AS Hour
+--Hive , substr(STAMP,1,7) AS Year_month
 from (select CAST('2016-01-30 12:00:00' AS text) as STAMP ) AS t2
-  --from (select CAST('2016-01-30 12:00:00' AS string) as STAMP ) AS t2
+--Hive from (select CAST('2016-01-30 12:00:00' AS string) as STAMP ) AS t2
 
   --Page64
 Select
