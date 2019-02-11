@@ -20,7 +20,7 @@ VALUES
 --Hive   , register_device int --integer
 --Hive );
 --Hive 
---Hive INSERT INTO 053_mst_users
+--Hive INSERT INTO '053_mst_users'
 --Hive VALUES
 --Hive     ('U001', '2016-08-26', 1)
 --Hive   , ('U002', '2016-08-26', 2)

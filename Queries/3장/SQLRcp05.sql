@@ -14,7 +14,7 @@ select stamp
 from "056_access_log";
  --Hive select stamp
  --Hive ,parse_url(referrer, 'HOST') AS referrer_host
- --Hive from 056_access_log;
+ --Hive from `056_access_log`;
 
 
 --Page 57
@@ -28,7 +28,7 @@ from "056_access_log";
  --Hive   , url
  --Hive ,parse_url(url, 'PATH') AS path
  --Hive ,parse_url(url, 'QUERT', 'id') AS id
- --Hive from 056_access_log;
+ --Hive from `056_access_log`;
 
 
 --Page 58
@@ -38,10 +38,14 @@ select
   , url
   , split_part(substring(url  from '//[^/]+([^?#]+)'),'/',2) AS path1
   , split_part(substring(url  from '//[^/]+([^?#]+)'),'/',3) AS path2
- --Hive ,split(parse_url(url, 'PATH','/') AS path1
- --Hive ,split(parse_url(url, 'QUERT', '/') AS path2
 from "056_access_log";
-
+ --Hive select
+ --Hive     stamp
+ --Hive   , url
+ --Hive   ,split(parse_url(url, 'PATH'),'/')[0] AS path0
+ --Hive   ,split(parse_url(url, 'PATH'),'/')[1] AS path1
+ --Hive   ,split(parse_url(url, 'PATH'),'/')[2] AS path2
+ --Hive from `056_access_log`;
 
 --Page 58
 select
